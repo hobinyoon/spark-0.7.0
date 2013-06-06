@@ -22,7 +22,7 @@
 # - SPARK_JAVA_OPTS, to add JVM options
 # - SPARK_LIBRARY_PATH, to add extra search paths for native libraries.
 
-export SCALA_HOME=/opt/scala-2.9.3
+export SCALA_HOME=/usr/local/scala-2.9.3
 
 export SPARK_CLASSPATH+=/root/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar
 SPARK_JAVA_OPTS+=" -Dspark.default.parallelism=1 "
