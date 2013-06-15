@@ -12,7 +12,6 @@ third_party/libmesos.so
 third_party/libmesos.dylib
 conf/java-opts
 conf/streaming-env.sh
-conf/log4j.properties
 docs/_site
 docs/api
 target/
