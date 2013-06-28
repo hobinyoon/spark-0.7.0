@@ -1,0 +1,652 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hobin/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hobin/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+Welcome to
+      ____              __  
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 0.7.0
+      /_/                  
+
+Using Scala version 2.9.3 (OpenJDK 64-Bit Server VM, Java 1.7.0_21)
+Initializing interpreter...
+0627-214008.502 SS Your hostname, tach-retina resolves to a loopback address: 127.0.1.1; using 192.168.56.10 instead (on interface eth1)
+0627-214008.504 SS Set SPARK_LOCAL_IP if you need to bind to another address
+Creating SparkContext...
+0627-214012.928 SS Slf4jEventHandler started
+0627-214013.115 SS Registered BlockManagerMaster Actor
+0627-214013.147 SS MemoryStore started with capacity 323.9 MB.
+0627-214013.150 SS Creating local directories at root dirs '/tmp'
+0627-214013.153 SS Created local directory at /tmp/spark-local-20130627214013-c4a6
+0627-214013.179 SS Bound socket to port 58647 with id = ConnectionManagerId(tach-retina,58647)
+0627-214013.194 SS Trying to register BlockManager
+0627-214013.199 SS Registering block manager tach-retina:58647 with 323.9 MB RAM
+0627-214013.200 SS Registered BlockManager
+0627-214013.232 SS Broadcast server started at http://192.168.56.10:51460
+0627-214013.240 SS Registered MapOutputTrackerActor actor
+0627-214013.247 SS HTTP File server directory is /tmp/spark-10bc5370-25d7-4635-8667-247717b17506
+0627-214013.526 SS IoWorker thread 'spray-io-worker-0' started
+0627-214013.778 SS akka://spark/user/BlockManagerHTTPServer started on /0.0.0.0:49258
+0627-214013.780 SS Started BlockManager web UI at http://tach-retina:49258
+0627-214013.836 SS DEPRECATED: hadoop-site.xml found in the classpath. Usage of hadoop-site.xml is deprecated. Instead use core-site.xml, mapred-site.xml and hdfs-site.xml to override properties of core-default.xml, mapred-default.xml and hdfs-default.xml respectively
+Spark context available as sc.
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val s = sc.textFile("s3n://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties")
+0627-214014.378 SS  Creating new Groups object
+0627-214014.385 SS Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping; cacheTimeout=300000
+0627-214014.479 SS hadoop login
+0627-214014.479 SS hadoop login commit
+0627-214014.483 SS using local user:UnixPrincipal: hobin
+0627-214014.486 SS UGI loginUser:hobin
+0627-214014.491 SS Creating filesystem for file:///
+0627-214014.621 SS ensureFreeSpace(58712) called with curMem=0, maxMem=339585269
+0627-214014.625 SS Block broadcast_0 stored as values to memory (estimated size 57.3 KB, free 323.8 MB)
+0627-214014.626 SS Put block broadcast_0 locally took  111 ms
+s: spark.RDD[String] = MappedRDD[1] at textFile at <console>:12
+
+scala> s.count()
+0627-214014.838 SS Trying to load the custom-built native-hadoop library...
+0627-214014.838 SS Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+0627-214014.838 SS java.library.path=
+0627-214014.838 SS Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+0627-214014.838 SS Snappy native library not loaded
+0627-214014.848 SS Creating filesystem for s3n://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214014.890 SS Set parameter http.useragent = Jakarta Commons-HttpClient/3.0.1
+0627-214014.891 SS Set parameter http.protocol.version = HTTP/1.1
+0627-214014.892 SS Set parameter http.connection-manager.class = class org.apache.commons.httpclient.SimpleHttpConnectionManager
+0627-214014.892 SS Set parameter http.protocol.cookie-policy = rfc2109
+0627-214014.892 SS Set parameter http.protocol.element-charset = US-ASCII
+0627-214014.893 SS Set parameter http.protocol.content-charset = ISO-8859-1
+0627-214014.894 SS Set parameter http.method.retry-handler = org.apache.commons.httpclient.DefaultHttpMethodRetryHandler@398364c2
+0627-214014.894 SS Set parameter http.dateparser.patterns = [EEE, dd MMM yyyy HH:mm:ss zzz, EEEE, dd-MMM-yy HH:mm:ss zzz, EEE MMM d HH:mm:ss yyyy, EEE, dd-MMM-yyyy HH:mm:ss z, EEE, dd-MMM-yyyy HH-mm-ss z, EEE, dd MMM yy HH:mm:ss z, EEE dd-MMM-yyyy HH:mm:ss z, EEE dd MMM yyyy HH:mm:ss z, EEE dd-MMM-yyyy HH-mm-ss z, EEE dd-MMM-yy HH:mm:ss z, EEE dd MMM yy HH:mm:ss z, EEE,dd-MMM-yy HH:mm:ss z, EEE,dd-MMM-yyyy HH:mm:ss z, EEE, dd-MM-yyyy HH:mm:ss z]
+0627-214014.894 SS s3service.https-only=true
+0627-214014.895 SS s3service.internal-error-retry-max=5
+0627-214014.895 SS devpay.user-token=null
+0627-214014.895 SS devpay.product-token=null
+0627-214014.895 SS httpclient.connection-timeout-ms=60000
+0627-214014.895 SS Set parameter http.connection.timeout = 60000
+0627-214014.896 SS httpclient.socket-timeout-ms=60000
+0627-214014.896 SS Set parameter http.socket.timeout = 60000
+0627-214014.896 SS httpclient.max-connections=4
+0627-214014.896 SS Set parameter http.connection-manager.max-per-host = {HostConfiguration[]=4}
+0627-214014.896 SS httpclient.stale-checking-enabled=true
+0627-214014.896 SS Set parameter http.connection.stalecheck = true
+0627-214014.896 SS Set parameter http.tcp.nodelay = true
+0627-214014.902 SS httpclient.useragent=null
+0627-214014.906 SS Setting user agent string: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)
+0627-214014.906 SS Set parameter http.useragent = JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)
+0627-214014.906 SS Set parameter http.protocol.expect-continue = true
+0627-214014.906 SS httpclient.retry-max=5
+0627-214014.907 SS Set parameter http.method.retry-handler = org.jets3t.service.impl.rest.httpclient.RestS3Service$1@51b36b79
+0627-214014.908 SS Java version: 1.7.0_21
+0627-214014.908 SS Java vendor: Oracle Corporation
+0627-214014.908 SS Java class path: /home/hobin/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar:/home/hobin/work/spark-0.7.0/conf:/home/hobin/work/spark-0.7.0/core/target/scala-2.9.2/classes:/home/hobin/work/spark-0.7.0/core/src/main/resources:/home/hobin/work/spark-0.7.0/repl/target/scala-2.9.2/classes:/home/hobin/work/spark-0.7.0/examples/target/scala-2.9.2/classes:/home/hobin/work/spark-0.7.0/streaming/target/scala-2.9.2/classes:/home/hobin/work/spark-0.7.0/streaming/lib/org/apache/kafka/kafka/0.7.2-spark/kafka-0.7.2-spark.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/easymock-3.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/avro-1.6.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/objenesis-1.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/kfs-0.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jackson-core-asl-1.9.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/h2-lzf-1.0.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/slf4j-api-1.6.4.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jna-3.0.9.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/zeromq-scala-binding_2.9.1-0.0.6.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/spray-server-1.0-M2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/parboiled-core-1.0.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jetty-util-7.5.3.v20111011.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jline-0.9.94.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/scalatest_2.9.2-1.8.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/httpcore-4.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/concurrentlinkedhashmap-lru-1.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/protobuf-java-2.4.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/colt-1.2.0.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/concurrent-1.3.4.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jetty-continuation-7.5.3.v20111011.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/twitter4j-core-3.0.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/scalacheck_2.9.2-1.9.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/slf4j-log4j12-1.6.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jets3t-0.7.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/cglib-nodep-2.2.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-net-1.4.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/zkclient-0.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/sjson_2.9.1-0.15.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jackson-mapper-asl-1.0.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/test-interface-0.5.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/spray-base-1.0-M2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/hsqldb-1.8.0.10.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/algebird-core_2.9.2-0.1.8.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/zookeeper-3.3.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/hadoop-core-1.0.4.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-el-1.0.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/kryo-2.20-shaded.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-io-1.4.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-httpclient-3.0.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/junit-interface-0.8.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jsp-api-2.1-6.1.14.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/mimepull-1.6.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/junit-4.8.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/fastutil-6.4.4.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/asm-all-3.3.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/spray-util-1.0-M2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/JavaEWAH-0.6.6.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jetty-io-7.5.3.v20111011.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-beanutils-core-1.8.0.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/mesos-0.9.0-incubating.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jasper-compiler-5.5.12.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jetty-http-7.5.3.v20111011.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-math-2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/akka-actor-2.0.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/servlet-api-2.5-20110124.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-io-2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/httpclient-4.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/spray-io-1.0-M2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/twitter4j-stream-3.0.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/akka-slf4j-2.0.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/guava-11.0.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/avro-ipc-1.6.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/servlet-api-2.5-6.1.14.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/spray-can-1.0-M2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/flume-ng-sdk-1.2.0.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/servlet-api-2.5.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/dispatch-json_2.9.1-0.8.5.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/akka-remote-2.0.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/junit-3.8.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jetty-server-7.5.3.v20111011.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-collections-3.2.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/twirl-api_2.9.2-0.5.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-digester-1.8.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/kryo-serializers-0.20.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/oro-2.0.8.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-cli-1.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-logging-1.1.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-configuration-1.6.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jasper-runtime-5.5.12.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/akka-zeromq-2.0.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-codec-1.4.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jetty-6.1.26.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-lang-2.6.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jsr305-1.3.9.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jetty-util-6.1.26.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/spray-json_2.9.2-1.1.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/commons-beanutils-1.7.0.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jnr-constants-0.8.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jackson-core-asl-1.0.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/paranamer-2.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/core-3.1.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/servlet-api-2.5-20081211.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/ant-1.6.5.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/xmlenc-0.52.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/parboiled-scala-1.0.2.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jsp-2.1-6.1.14.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/jackson-mapper-asl-1.9.3.jar:/home/hobin/work/spark-0.7.0/lib_managed/jars/velocity-1.7.jar:/home/hobin/work/spark-0.7.0/lib_managed/bundles/log4j-1.2.16.jar:/home/hobin/work/spark-0.7.0/lib_managed/bundles/netty-3.2.7.Final.jar:/home/hobin/work/spark-0.7.0/lib_managed/bundles/netty-3.5.3.Final.jar:/home/hobin/work/spark-0.7.0/lib_managed/bundles/compress-lzf-0.8.4.jar:/home/hobin/work/spark-0.7.0/lib_managed/bundles/config-0.3.1.jar:/home/hobin/work/spark-0.7.0/lib_managed/bundles/snappy-java-1.0.4.1.jar:/home/hobin/work/spark-0.7.0/repl/lib/scala-jline.jar:/home/hobin/work/spark-0.7.0/bagel/target/scala-2.9.2/classes:/home/hobin/work/spark-0.7.0/python/lib/py4j0.7.jar
+0627-214014.908 SS Operating system name: Linux
+0627-214014.908 SS Operating system architecture: amd64
+0627-214014.908 SS Operating system version: 3.8.0-25-generic
+0627-214014.909 SS SUN 1.7: SUN (DSA key/parameter generation; DSA signing; SHA-1, MD5 digests; SecureRandom; X.509 certificates; JKS keystore; PKIX CertPathValidator; PKIX CertPathBuilder; LDAP, Collection CertStores, JavaPolicy Policy; JavaLoginConfig Configuration)
+0627-214014.909 SS SunRsaSign 1.7: Sun RSA signature provider
+0627-214014.909 SS SunJSSE 1.7: Sun JSSE provider(PKCS12, SunX509 key/trust factories, SSLv3, TLSv1)
+0627-214014.909 SS SunJCE 1.7: SunJCE Provider (implements RSA, DES, Triple DES, AES, Blowfish, ARCFOUR, RC2, PBE, Diffie-Hellman, HMAC)
+0627-214014.910 SS SunJGSS 1.7: Sun (Kerberos v5, SPNEGO)
+0627-214014.910 SS SunSASL 1.7: Sun SASL provider(implements client mechanisms for: DIGEST-MD5, GSSAPI, EXTERNAL, PLAIN, CRAM-MD5, NTLM; server mechanisms for: DIGEST-MD5, GSSAPI, CRAM-MD5, NTLM)
+0627-214014.910 SS XMLDSig 1.0: XMLDSig (DOM XMLSignatureFactory; DOM KeyInfoFactory)
+0627-214014.910 SS SunPCSC 1.7: Sun PC/SC provider
+0627-214014.910 SS SunPKCS11-NSS 1.7: SunPKCS11-NSS using library null
+0627-214014.912 SS httpclient.proxy-autodetect=true
+0627-214014.912 SS httpclient.proxy-host=null
+0627-214014.912 SS httpclient.proxy-port=-1
+0627-214014.913 SS s3service.s3-endpoint=s3.amazonaws.com
+0627-214014.917 SS About to attempt auto proxy detection under Java version:1.7.0_21-b02
+0627-214014.917 SS Sun Plugin reported java version not 1.3.X, 1.4.X, 1.5.X or 1.6.X - trying failover detection...
+0627-214014.917 SS Using failover proxy detection...
+0627-214014.917 SS Plugin Proxy Config List Property:null
+0627-214014.917 SS No configured plugin proxy list
+0627-214014.921 SS getFileStatus retrieving metadata for key 'log4j.properties'
+0627-214014.921 SS Retrieving Head information for bucket tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b and object log4j.properties
+0627-214014.921 SS s3service.disable-dns-buckets=false
+0627-214014.923 SS S3 URL: https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443/log4j.properties
+0627-214014.943 SS Performing HEAD request for 'https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com/log4j.properties', expecting response code 200
+0627-214014.943 SS Adding authorization for AWS Access Key 'AKIAIOYHYYV7XXIZJECA'.
+0627-214014.944 SS Canonical string ('|' is a newline): HEAD|||Fri, 28 Jun 2013 04:40:14 GMT|/tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214014.954 SS HttpConnectionManager.getConnection:  config = HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com], timeout = 0
+0627-214014.955 SS Allocating new connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214014.958 SS Open connection to tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443
+0627-214020.094 SS >> "HEAD /log4j.properties HTTP/1.1[\r][\n]"
+0627-214020.094 SS Adding Host request header
+0627-214020.100 SS >> "Content-Type: [\r][\n]"
+0627-214020.100 SS >> "Date: Fri, 28 Jun 2013 04:40:14 GMT[\r][\n]"
+0627-214020.100 SS >> "Authorization: AWS AKIAIOYHYYV7XXIZJECA:ebChTuQYHJN3RiohFP4V3Uj/jMA=[\r][\n]"
+0627-214020.100 SS >> "User-Agent: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)[\r][\n]"
+0627-214020.100 SS >> "Host: tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com[\r][\n]"
+0627-214020.100 SS >> "[\r][\n]"
+0627-214020.546 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214020.548 SS << "x-amz-id-2: 0t+upf/9+2EPp9vy8pTfTT5uaXyWnAVaXg+3NqZxV/Bn/1C6cavZb6VBIhcD2HFI[\r][\n]"
+0627-214020.548 SS << "x-amz-request-id: 1C3822383537DAF8[\r][\n]"
+0627-214020.548 SS << "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+0627-214020.548 SS << "Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT[\r][\n]"
+0627-214020.548 SS << "ETag: "d0d4d243b53d885598de751a7c00e132"[\r][\n]"
+0627-214020.548 SS << "Accept-Ranges: bytes[\r][\n]"
+0627-214020.548 SS << "Content-Type: application/octet-stream[\r][\n]"
+0627-214020.548 SS << "Content-Length: 1971[\r][\n]"
+0627-214020.548 SS << "Server: AmazonS3[\r][\n]"
+0627-214020.548 SS Resorting to protocol version default close connection policy
+0627-214020.548 SS Should NOT close connection, using HTTP/1.1
+0627-214020.549 SS Releasing connection back to connection manager.
+0627-214020.549 SS Freeing connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214020.549 SS Adding connection at: 1372394420549
+0627-214020.549 SS Notifying no-one, there are no waiting threads
+0627-214020.549 SS Response for '/log4j.properties'. Content-Type: application/octet-stream, Headers: [x-amz-id-2: 0t+upf/9+2EPp9vy8pTfTT5uaXyWnAVaXg+3NqZxV/Bn/1C6cavZb6VBIhcD2HFI
+, x-amz-request-id: 1C3822383537DAF8
+, Date: Fri, 28 Jun 2013 04:40:21 GMT
+, Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT
+, ETag: "d0d4d243b53d885598de751a7c00e132"
+, Accept-Ranges: bytes
+, Content-Type: application/octet-stream
+, Content-Length: 1971
+, Server: AmazonS3
+]
+0627-214020.551 SS Cleaning up REST metadata items
+0627-214020.551 SS Removed Amazon header prefix from key: x-amz-request-id=>request-id
+0627-214020.551 SS Leaving header item unchanged: ETag="d0d4d243b53d885598de751a7c00e132"
+0627-214020.551 SS Leaving header item unchanged: Date=Fri, 28 Jun 2013 04:40:21 GMT
+0627-214020.551 SS Parsing date string 'Fri, 28 Jun 2013 04:40:21 GMT' into Date object for key: Date
+0627-214020.552 SS Leaving HTTP header item unchanged: Content-Length=1971
+0627-214020.552 SS Removed Amazon header prefix from key: x-amz-id-2=>id-2
+0627-214020.552 SS Leaving header item unchanged: Last-Modified=Mon, 24 Jun 2013 05:32:07 GMT
+0627-214020.552 SS Parsing date string 'Mon, 24 Jun 2013 05:32:07 GMT' into Date object for key: Last-Modified
+0627-214020.552 SS Ignoring metadata item: Accept-Ranges=bytes
+0627-214020.552 SS Leaving HTTP header item unchanged: Content-Type=application/octet-stream
+0627-214020.552 SS Ignoring metadata item: Server=AmazonS3
+0627-214020.552 SS Releasing HttpMethod after HEAD
+0627-214020.552 SS getFileStatus returning 'file' for key 'log4j.properties'
+0627-214020.561 SS Total input paths to process : 1
+0627-214020.566 SS Total # of splits: 1
+0627-214020.571 SS Starting job: count at <console>:15
+0627-214020.576 SS Got event of type spark.scheduler.JobSubmitted
+0627-214020.584 SS Got job 0 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0627-214020.585 SS Final stage: Stage 0 (textFile at <console>:12)
+0627-214020.586 SS Parents of final stage: List()
+0627-214020.593 SS Missing parents: List()
+0627-214020.594 SS submitStage(Stage 0)
+0627-214020.595 SS missing: List()
+0627-214020.596 SS Submitting Stage 0 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0627-214020.597 SS submitMissingTasks(Stage 0)
+0627-214020.606 SS Submitting 1 missing tasks from Stage 0 (MappedRDD[1] at textFile at <console>:12)
+0627-214020.607 SS New pending tasks: Set(ResultTask(0, 0))
+0627-214020.613 SS Running ResultTask(0, 0)
+0627-214020.669 SS Size of task 0 is 1465 bytes
+0627-214020.683 SS Getting local block broadcast_0
+0627-214020.685 SS Level for block broadcast_0 is StorageLevel(true, true, true, 1)
+0627-214020.686 SS Getting block broadcast_0 from memory
+0627-214020.721 SS getFileStatus retrieving metadata for key 'log4j.properties'
+0627-214020.721 SS Retrieving Head information for bucket tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b and object log4j.properties
+0627-214020.722 SS s3service.disable-dns-buckets=false
+0627-214020.723 SS S3 URL: https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443/log4j.properties
+0627-214020.724 SS Performing HEAD request for 'https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com/log4j.properties', expecting response code 200
+0627-214020.725 SS Adding authorization for AWS Access Key 'AKIAIOYHYYV7XXIZJECA'.
+0627-214020.725 SS Canonical string ('|' is a newline): HEAD|||Fri, 28 Jun 2013 04:40:20 GMT|/tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214020.728 SS HttpConnectionManager.getConnection:  config = HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com], timeout = 0
+0627-214020.729 SS Getting free connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214020.735 SS >> "HEAD /log4j.properties HTTP/1.1[\r][\n]"
+0627-214020.736 SS Adding Host request header
+0627-214020.737 SS >> "Content-Type: [\r][\n]"
+0627-214020.738 SS >> "Date: Fri, 28 Jun 2013 04:40:20 GMT[\r][\n]"
+0627-214020.738 SS >> "Authorization: AWS AKIAIOYHYYV7XXIZJECA:elu1JZeXh4SlSvMcJ7XJnD9ONT4=[\r][\n]"
+0627-214020.738 SS >> "User-Agent: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)[\r][\n]"
+0627-214020.738 SS >> "Host: tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com[\r][\n]"
+0627-214020.738 SS >> "[\r][\n]"
+0627-214020.859 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214020.860 SS << "x-amz-id-2: wSGGliVNokR93F0gBYErwDvlid98LjP/tX/gZqTq20WN5dUV8etL7NQzEedR8uVu[\r][\n]"
+0627-214020.860 SS << "x-amz-request-id: D2762C80704530AD[\r][\n]"
+0627-214020.860 SS << "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+0627-214020.860 SS << "Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT[\r][\n]"
+0627-214020.860 SS << "ETag: "d0d4d243b53d885598de751a7c00e132"[\r][\n]"
+0627-214020.860 SS << "Accept-Ranges: bytes[\r][\n]"
+0627-214020.860 SS << "Content-Type: application/octet-stream[\r][\n]"
+0627-214020.860 SS << "Content-Length: 1971[\r][\n]"
+0627-214020.860 SS << "Server: AmazonS3[\r][\n]"
+0627-214020.860 SS Resorting to protocol version default close connection policy
+0627-214020.860 SS Should NOT close connection, using HTTP/1.1
+0627-214020.860 SS Releasing connection back to connection manager.
+0627-214020.861 SS Freeing connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214020.861 SS Adding connection at: 1372394420861
+0627-214020.861 SS Notifying no-one, there are no waiting threads
+0627-214020.861 SS Response for '/log4j.properties'. Content-Type: application/octet-stream, Headers: [x-amz-id-2: wSGGliVNokR93F0gBYErwDvlid98LjP/tX/gZqTq20WN5dUV8etL7NQzEedR8uVu
+, x-amz-request-id: D2762C80704530AD
+, Date: Fri, 28 Jun 2013 04:40:21 GMT
+, Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT
+, ETag: "d0d4d243b53d885598de751a7c00e132"
+, Accept-Ranges: bytes
+, Content-Type: application/octet-stream
+, Content-Length: 1971
+, Server: AmazonS3
+]
+0627-214020.862 SS Cleaning up REST metadata items
+0627-214020.862 SS Removed Amazon header prefix from key: x-amz-request-id=>request-id
+0627-214020.862 SS Leaving header item unchanged: ETag="d0d4d243b53d885598de751a7c00e132"
+0627-214020.862 SS Leaving header item unchanged: Date=Fri, 28 Jun 2013 04:40:21 GMT
+0627-214020.862 SS Parsing date string 'Fri, 28 Jun 2013 04:40:21 GMT' into Date object for key: Date
+0627-214020.863 SS Leaving HTTP header item unchanged: Content-Length=1971
+0627-214020.863 SS Removed Amazon header prefix from key: x-amz-id-2=>id-2
+0627-214020.863 SS Leaving header item unchanged: Last-Modified=Mon, 24 Jun 2013 05:32:07 GMT
+0627-214020.863 SS Parsing date string 'Mon, 24 Jun 2013 05:32:07 GMT' into Date object for key: Last-Modified
+0627-214020.863 SS Ignoring metadata item: Accept-Ranges=bytes
+0627-214020.863 SS Leaving HTTP header item unchanged: Content-Type=application/octet-stream
+0627-214020.863 SS Ignoring metadata item: Server=AmazonS3
+0627-214020.863 SS Releasing HttpMethod after HEAD
+0627-214020.863 SS getFileStatus returning 'file' for key 'log4j.properties'
+0627-214020.863 SS Opening 's3n://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties' for reading
+0627-214020.864 SS Retrieving All information for bucket tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b and object log4j.properties
+0627-214020.864 SS s3service.disable-dns-buckets=false
+0627-214020.865 SS S3 URL: https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443/log4j.properties
+0627-214020.866 SS Performing GET request for 'https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com/log4j.properties', expecting response code 200
+0627-214020.866 SS Adding authorization for AWS Access Key 'AKIAIOYHYYV7XXIZJECA'.
+0627-214020.866 SS Canonical string ('|' is a newline): GET|||Fri, 28 Jun 2013 04:40:20 GMT|/tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214020.866 SS HttpConnectionManager.getConnection:  config = HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com], timeout = 0
+0627-214020.866 SS Getting free connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214020.868 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214020.868 SS Adding Host request header
+0627-214020.868 SS >> "Content-Type: [\r][\n]"
+0627-214020.868 SS >> "Date: Fri, 28 Jun 2013 04:40:20 GMT[\r][\n]"
+0627-214020.869 SS >> "Authorization: AWS AKIAIOYHYYV7XXIZJECA:Gcn3xZngaM+3GcJOhJ5YgA/Gd0g=[\r][\n]"
+0627-214020.869 SS >> "User-Agent: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)[\r][\n]"
+0627-214020.869 SS >> "Host: tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com[\r][\n]"
+0627-214020.869 SS >> "[\r][\n]"
+0627-214021.129 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214021.130 SS << "x-amz-id-2: ttotj2ENMxqcar/hqvO+7hWGQf1FJpaysS70RAYmjcd1P5+zhO5fw95a9jqIUTrs[\r][\n]"
+0627-214021.130 SS << "x-amz-request-id: F6DE347AB494D07C[\r][\n]"
+0627-214021.130 SS << "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+0627-214021.130 SS << "Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT[\r][\n]"
+0627-214021.130 SS << "ETag: "d0d4d243b53d885598de751a7c00e132"[\r][\n]"
+0627-214021.130 SS << "Accept-Ranges: bytes[\r][\n]"
+0627-214021.130 SS << "Content-Type: application/octet-stream[\r][\n]"
+0627-214021.130 SS << "Content-Length: 1971[\r][\n]"
+0627-214021.130 SS << "Server: AmazonS3[\r][\n]"
+0627-214021.132 SS Response for '/log4j.properties'. Content-Type: application/octet-stream, Headers: [x-amz-id-2: ttotj2ENMxqcar/hqvO+7hWGQf1FJpaysS70RAYmjcd1P5+zhO5fw95a9jqIUTrs
+, x-amz-request-id: F6DE347AB494D07C
+, Date: Fri, 28 Jun 2013 04:40:21 GMT
+, Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT
+, ETag: "d0d4d243b53d885598de751a7c00e132"
+, Accept-Ranges: bytes
+, Content-Type: application/octet-stream
+, Content-Length: 1971
+, Server: AmazonS3
+]
+0627-214021.132 SS Cleaning up REST metadata items
+0627-214021.132 SS Removed Amazon header prefix from key: x-amz-request-id=>request-id
+0627-214021.132 SS Leaving header item unchanged: ETag="d0d4d243b53d885598de751a7c00e132"
+0627-214021.132 SS Leaving header item unchanged: Date=Fri, 28 Jun 2013 04:40:21 GMT
+0627-214021.132 SS Parsing date string 'Fri, 28 Jun 2013 04:40:21 GMT' into Date object for key: Date
+0627-214021.132 SS Leaving HTTP header item unchanged: Content-Length=1971
+0627-214021.132 SS Removed Amazon header prefix from key: x-amz-id-2=>id-2
+0627-214021.132 SS Leaving header item unchanged: Last-Modified=Mon, 24 Jun 2013 05:32:07 GMT
+0627-214021.132 SS Parsing date string 'Mon, 24 Jun 2013 05:32:07 GMT' into Date object for key: Last-Modified
+0627-214021.133 SS Ignoring metadata item: Accept-Ranges=bytes
+0627-214021.133 SS Leaving HTTP header item unchanged: Content-Type=application/octet-stream
+0627-214021.133 SS Ignoring metadata item: Server=AmazonS3
+0627-214021.137 SS Releasing connection back to connection manager.
+0627-214021.137 SS Freeing connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214021.137 SS Adding connection at: 1372394421137
+0627-214021.137 SS Notifying no-one, there are no waiting threads
+0627-214021.137 SS Released HttpMethod as its response data stream is closed
+0627-214021.138 SS Opening key 'log4j.properties' for reading at position '0'
+0627-214021.138 SS Retrieving All information for bucket tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b and object log4j.properties
+0627-214021.138 SS Only retrieve object if it is within range:bytes=0-
+0627-214021.138 SS s3service.disable-dns-buckets=false
+0627-214021.138 SS S3 URL: https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443/log4j.properties
+0627-214021.138 SS Added request header to connection: Range=bytes=0-
+0627-214021.138 SS Performing GET request for 'https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com/log4j.properties', expecting response code 206
+0627-214021.138 SS Adding authorization for AWS Access Key 'AKIAIOYHYYV7XXIZJECA'.
+0627-214021.139 SS Canonical string ('|' is a newline): GET|||Fri, 28 Jun 2013 04:40:21 GMT|/tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214021.139 SS HttpConnectionManager.getConnection:  config = HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com], timeout = 0
+0627-214021.139 SS Getting free connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214021.139 SS Open connection to tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443
+0627-214021.216 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214021.216 SS Adding Host request header
+0627-214021.216 SS >> "Content-Type: [\r][\n]"
+0627-214021.216 SS >> "Range: bytes=0-[\r][\n]"
+0627-214021.216 SS >> "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+0627-214021.216 SS >> "Authorization: AWS AKIAIOYHYYV7XXIZJECA:+annhSa9xC9TQgmz/GYU0uWrGa8=[\r][\n]"
+0627-214021.216 SS >> "User-Agent: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)[\r][\n]"
+0627-214021.217 SS >> "Host: tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com[\r][\n]"
+0627-214021.217 SS >> "[\r][\n]"
+0627-214021.631 SS << "HTTP/1.1 206 Partial Content[\r][\n]"
+0627-214021.632 SS << "x-amz-id-2: BCGA6Obs62oHVrSc3n7AsdwGjMECc8BrfIADzcO+ahjLaeVw+OKiHFn/v0/G989X[\r][\n]"
+0627-214021.632 SS << "x-amz-request-id: 75B15ADF5FC8D489[\r][\n]"
+0627-214021.632 SS << "Date: Fri, 28 Jun 2013 04:40:22 GMT[\r][\n]"
+0627-214021.632 SS << "Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT[\r][\n]"
+0627-214021.632 SS << "ETag: "d0d4d243b53d885598de751a7c00e132"[\r][\n]"
+0627-214021.632 SS << "Accept-Ranges: bytes[\r][\n]"
+0627-214021.632 SS << "Content-Range: bytes 0-1970/1971[\r][\n]"
+0627-214021.632 SS << "Content-Type: application/octet-stream[\r][\n]"
+0627-214021.632 SS << "Content-Length: 1971[\r][\n]"
+0627-214021.632 SS << "Server: AmazonS3[\r][\n]"
+0627-214021.632 SS Response for '/log4j.properties'. Content-Type: application/octet-stream, Headers: [x-amz-id-2: BCGA6Obs62oHVrSc3n7AsdwGjMECc8BrfIADzcO+ahjLaeVw+OKiHFn/v0/G989X
+, x-amz-request-id: 75B15ADF5FC8D489
+, Date: Fri, 28 Jun 2013 04:40:22 GMT
+, Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT
+, ETag: "d0d4d243b53d885598de751a7c00e132"
+, Accept-Ranges: bytes
+, Content-Range: bytes 0-1970/1971
+, Content-Type: application/octet-stream
+, Content-Length: 1971
+, Server: AmazonS3
+]
+0627-214021.632 SS Cleaning up REST metadata items
+0627-214021.632 SS Removed Amazon header prefix from key: x-amz-request-id=>request-id
+0627-214021.632 SS Leaving header item unchanged: ETag="d0d4d243b53d885598de751a7c00e132"
+0627-214021.632 SS Leaving header item unchanged: Date=Fri, 28 Jun 2013 04:40:22 GMT
+0627-214021.632 SS Parsing date string 'Fri, 28 Jun 2013 04:40:22 GMT' into Date object for key: Date
+0627-214021.633 SS Leaving HTTP header item unchanged: Content-Length=1971
+0627-214021.633 SS Removed Amazon header prefix from key: x-amz-id-2=>id-2
+0627-214021.633 SS Leaving header item unchanged: Last-Modified=Mon, 24 Jun 2013 05:32:07 GMT
+0627-214021.633 SS Parsing date string 'Mon, 24 Jun 2013 05:32:07 GMT' into Date object for key: Last-Modified
+0627-214021.633 SS Ignoring metadata item: Accept-Ranges=bytes
+0627-214021.633 SS Leaving HTTP header item unchanged: Content-Type=application/octet-stream
+0627-214021.633 SS Ignoring metadata item: Server=AmazonS3
+0627-214021.633 SS Ignoring metadata item: Content-Range=bytes 0-1970/1971
+0627-214021.641 SS << "# May get overridden by System Property[\n]"
+0627-214021.641 SS << "tachyon.logger.type=Console[\n]"
+0627-214021.642 SS << "[\n]"
+0627-214021.642 SS << "log4j.rootLogger=INFO, ${tachyon.logger.type}[\n]"
+0627-214021.642 SS << "[\n]"
+0627-214021.642 SS << "log4j.appender.Console=org.apache.log4j.ConsoleAppender[\n]"
+0627-214021.642 SS << "log4j.appender.Console.Target=System.out[\n]"
+0627-214021.642 SS << "log4j.appender.Console.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214021.642 SS << "log4j.appender.Console.layout.ConversionPattern=%d{ISO8601} %-5p %c{1} (%F:%M) - %m%n[\n]"
+0627-214021.642 SS << "[\n]"
+0627-214021.642 SS << "# Appender for Master[\n]"
+0627-214021.642 SS << "log4j.appender.MASTER_LOGGER=tachyon.Log4jFileAppender[\n]"
+0627-214021.643 SS << "log4j.appender.MASTER_LOGGER.File=${tachyon.home}/logs/master.log[\n]"
+0627-214021.643 SS << "[\n]"
+0627-214021.643 SS << "log4j.appender.MASTER_LOGGER.MaxFileSize=10[\n]"
+0627-214021.643 SS << "log4j.appender.MASTER_LOGGER.MaxBackupIndex=100[\n]"
+0627-214021.643 SS << "log4j.appender.MASTER_LOGGER.DeletionPercentage=10[\n]"
+0627-214021.643 SS << "log4j.appender.MASTER_LOGGER.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214021.643 SS << "log4j.appender.MASTER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M) - %m%n[\n]"
+0627-214021.643 SS << "#log4j.appender.MASTER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n[\n]"
+0627-214021.643 SS << "[\n]"
+0627-214021.643 SS << "# Appender for Workers[\n]"
+0627-214021.643 SS << "log4j.appender.WORKER_LOGGER=tachyon.Log4jFileAppender[\n]"
+0627-214021.644 SS << "log4j.appender.WORKER_LOGGER.File=${tachyon.home}/logs/worker.log[\n]"
+0627-214021.644 SS << "[\n]"
+0627-214021.644 SS << "log4j.appender.WORKER_LOGGER.MaxFileSize=10[\n]"
+0627-214021.644 SS << "log4j.appender.WORKER_LOGGER.MaxBackupIndex=100[\n]"
+0627-214021.644 SS << "log4j.appender.WORKER_LOGGER.DeletionPercentage=10[\n]"
+0627-214021.644 SS << "log4j.appender.WORKER_LOGGER.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214021.644 SS << "log4j.appender.WORKER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M) - %m%n[\n]"
+0627-214021.644 SS << "#log4j.appender.WORKER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n[\n]"
+0627-214021.644 SS << "[\n]"
+0627-214021.645 SS << "# Appender for User[\n]"
+0627-214021.645 SS << "log4j.appender.USER_LOGGER=tachyon.Log4jFileAppender[\n]"
+0627-214021.645 SS << "log4j.appender.USER_LOGGER.File=${tachyon.home}/logs/user.log[\n]"
+0627-214021.645 SS << "log4j.appender.USER_LOGGER.MaxFileSize=10[\n]"
+0627-214021.645 SS << "log4j.appender.USER_LOGGER.MaxBackupIndex=10[\n]"
+0627-214021.645 SS << "log4j.appender.USER_LOGGER.DeletionPercentage=20[\n]"
+0627-214021.645 SS << "log4j.appender.USER_LOGGER.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214021.645 SS << "log4j.appender.USER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M) - %m%n[\n]"
+0627-214021.645 SS << "#log4j.appender.USER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n[\n]"
+0627-214021.646 SS Resorting to protocol version default close connection policy
+0627-214021.646 SS Should NOT close connection, using HTTP/1.1
+0627-214021.646 SS Releasing connection back to connection manager.
+0627-214021.646 SS Freeing connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214021.647 SS Adding connection at: 1372394421647
+0627-214021.647 SS Notifying no-one, there are no waiting threads
+0627-214021.647 SS Released HttpMethod as its response data stream is fully consumed
+0627-214021.656 SS Finished ResultTask(0, 0)
+0627-214021.658 SS Got event of type spark.scheduler.CompletionEvent
+0627-214021.660 SS Completed ResultTask(0, 0)
+0627-214021.663 SS Stage 0 (textFile at <console>:12) finished in 1.050 s
+0627-214021.665 SS Job finished: count at <console>:15, took 1.093720291 s
+res0: Long = 41
+
+scala> s.count()
+0627-214021.849 SS Starting job: count at <console>:15
+0627-214021.850 SS Got event of type spark.scheduler.JobSubmitted
+0627-214021.850 SS Got job 1 (count at <console>:15) with 1 output partitions (allowLocal=false)
+0627-214021.850 SS Final stage: Stage 1 (textFile at <console>:12)
+0627-214021.850 SS Parents of final stage: List()
+0627-214021.851 SS Missing parents: List()
+0627-214021.851 SS submitStage(Stage 1)
+0627-214021.851 SS missing: List()
+0627-214021.852 SS Submitting Stage 1 (MappedRDD[1] at textFile at <console>:12), which has no missing parents
+0627-214021.852 SS submitMissingTasks(Stage 1)
+0627-214021.852 SS Submitting 1 missing tasks from Stage 1 (MappedRDD[1] at textFile at <console>:12)
+0627-214021.852 SS New pending tasks: Set(ResultTask(1, 0))
+0627-214021.852 SS Running ResultTask(1, 0)
+0627-214021.854 SS Size of task 0 is 1468 bytes
+0627-214021.855 SS Getting local block broadcast_0
+0627-214021.856 SS Level for block broadcast_0 is StorageLevel(true, true, true, 1)
+0627-214021.856 SS Getting block broadcast_0 from memory
+0627-214021.876 SS getFileStatus retrieving metadata for key 'log4j.properties'
+0627-214021.876 SS Retrieving Head information for bucket tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b and object log4j.properties
+0627-214021.876 SS s3service.disable-dns-buckets=false
+0627-214021.876 SS S3 URL: https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443/log4j.properties
+0627-214021.877 SS Performing HEAD request for 'https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com/log4j.properties', expecting response code 200
+0627-214021.877 SS Adding authorization for AWS Access Key 'AKIAIOYHYYV7XXIZJECA'.
+0627-214021.877 SS Canonical string ('|' is a newline): HEAD|||Fri, 28 Jun 2013 04:40:21 GMT|/tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214021.878 SS HttpConnectionManager.getConnection:  config = HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com], timeout = 0
+0627-214021.878 SS Getting free connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214021.880 SS >> "HEAD /log4j.properties HTTP/1.1[\r][\n]"
+0627-214021.880 SS Adding Host request header
+0627-214021.881 SS >> "Content-Type: [\r][\n]"
+0627-214021.881 SS >> "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+0627-214021.881 SS >> "Authorization: AWS AKIAIOYHYYV7XXIZJECA:iut45Yf1hLnITHEGJ5LZpFAciU0=[\r][\n]"
+0627-214021.881 SS >> "User-Agent: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)[\r][\n]"
+0627-214021.881 SS >> "Host: tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com[\r][\n]"
+0627-214021.881 SS >> "[\r][\n]"
+0627-214021.969 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214021.969 SS << "x-amz-id-2: jZehicgav3D2kl2HfDo7HyyJpEZkLhlUSBqycEwzjqTrCP0dp963kc19A1sZ/ELt[\r][\n]"
+0627-214021.969 SS << "x-amz-request-id: FB32C82ECF79FD0B[\r][\n]"
+0627-214021.969 SS << "Date: Fri, 28 Jun 2013 04:40:22 GMT[\r][\n]"
+0627-214021.969 SS << "Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT[\r][\n]"
+0627-214021.969 SS << "ETag: "d0d4d243b53d885598de751a7c00e132"[\r][\n]"
+0627-214021.969 SS << "Accept-Ranges: bytes[\r][\n]"
+0627-214021.969 SS << "Content-Type: application/octet-stream[\r][\n]"
+0627-214021.969 SS << "Content-Length: 1971[\r][\n]"
+0627-214021.969 SS << "Server: AmazonS3[\r][\n]"
+0627-214021.969 SS Resorting to protocol version default close connection policy
+0627-214021.969 SS Should NOT close connection, using HTTP/1.1
+0627-214021.969 SS Releasing connection back to connection manager.
+0627-214021.970 SS Freeing connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214021.970 SS Adding connection at: 1372394421970
+0627-214021.970 SS Notifying no-one, there are no waiting threads
+0627-214021.970 SS Response for '/log4j.properties'. Content-Type: application/octet-stream, Headers: [x-amz-id-2: jZehicgav3D2kl2HfDo7HyyJpEZkLhlUSBqycEwzjqTrCP0dp963kc19A1sZ/ELt
+, x-amz-request-id: FB32C82ECF79FD0B
+, Date: Fri, 28 Jun 2013 04:40:22 GMT
+, Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT
+, ETag: "d0d4d243b53d885598de751a7c00e132"
+, Accept-Ranges: bytes
+, Content-Type: application/octet-stream
+, Content-Length: 1971
+, Server: AmazonS3
+]
+0627-214021.970 SS Cleaning up REST metadata items
+0627-214021.970 SS Removed Amazon header prefix from key: x-amz-request-id=>request-id
+0627-214021.970 SS Leaving header item unchanged: ETag="d0d4d243b53d885598de751a7c00e132"
+0627-214021.970 SS Leaving header item unchanged: Date=Fri, 28 Jun 2013 04:40:22 GMT
+0627-214021.970 SS Parsing date string 'Fri, 28 Jun 2013 04:40:22 GMT' into Date object for key: Date
+0627-214021.970 SS Leaving HTTP header item unchanged: Content-Length=1971
+0627-214021.971 SS Removed Amazon header prefix from key: x-amz-id-2=>id-2
+0627-214021.971 SS Leaving header item unchanged: Last-Modified=Mon, 24 Jun 2013 05:32:07 GMT
+0627-214021.971 SS Parsing date string 'Mon, 24 Jun 2013 05:32:07 GMT' into Date object for key: Last-Modified
+0627-214021.971 SS Ignoring metadata item: Accept-Ranges=bytes
+0627-214021.971 SS Leaving HTTP header item unchanged: Content-Type=application/octet-stream
+0627-214021.971 SS Ignoring metadata item: Server=AmazonS3
+0627-214021.971 SS Releasing HttpMethod after HEAD
+0627-214021.971 SS getFileStatus returning 'file' for key 'log4j.properties'
+0627-214021.971 SS Opening 's3n://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties' for reading
+0627-214021.971 SS Retrieving All information for bucket tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b and object log4j.properties
+0627-214021.971 SS s3service.disable-dns-buckets=false
+0627-214021.972 SS S3 URL: https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443/log4j.properties
+0627-214021.972 SS Performing GET request for 'https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com/log4j.properties', expecting response code 200
+0627-214021.972 SS Adding authorization for AWS Access Key 'AKIAIOYHYYV7XXIZJECA'.
+0627-214021.972 SS Canonical string ('|' is a newline): GET|||Fri, 28 Jun 2013 04:40:21 GMT|/tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214021.973 SS HttpConnectionManager.getConnection:  config = HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com], timeout = 0
+0627-214021.973 SS Getting free connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214021.974 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214021.974 SS Adding Host request header
+0627-214021.975 SS >> "Content-Type: [\r][\n]"
+0627-214021.975 SS >> "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+0627-214021.975 SS >> "Authorization: AWS AKIAIOYHYYV7XXIZJECA:+annhSa9xC9TQgmz/GYU0uWrGa8=[\r][\n]"
+0627-214021.975 SS >> "User-Agent: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)[\r][\n]"
+0627-214021.975 SS >> "Host: tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com[\r][\n]"
+0627-214021.975 SS >> "[\r][\n]"
+0627-214022.239 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214022.239 SS << "x-amz-id-2: fu9Iu1Nl05tPTGvtrT//eAx8Xh2xIc7ZLPjtgZHYRoIUQEZ0Tw5DXGQNArVo+4Tp[\r][\n]"
+0627-214022.239 SS << "x-amz-request-id: AFAA17D5A868EC3E[\r][\n]"
+0627-214022.239 SS << "Date: Fri, 28 Jun 2013 04:40:23 GMT[\r][\n]"
+0627-214022.239 SS << "Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT[\r][\n]"
+0627-214022.239 SS << "ETag: "d0d4d243b53d885598de751a7c00e132"[\r][\n]"
+0627-214022.239 SS << "Accept-Ranges: bytes[\r][\n]"
+0627-214022.239 SS << "Content-Type: application/octet-stream[\r][\n]"
+0627-214022.239 SS << "Content-Length: 1971[\r][\n]"
+0627-214022.239 SS << "Server: AmazonS3[\r][\n]"
+0627-214022.240 SS Response for '/log4j.properties'. Content-Type: application/octet-stream, Headers: [x-amz-id-2: fu9Iu1Nl05tPTGvtrT//eAx8Xh2xIc7ZLPjtgZHYRoIUQEZ0Tw5DXGQNArVo+4Tp
+, x-amz-request-id: AFAA17D5A868EC3E
+, Date: Fri, 28 Jun 2013 04:40:23 GMT
+, Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT
+, ETag: "d0d4d243b53d885598de751a7c00e132"
+, Accept-Ranges: bytes
+, Content-Type: application/octet-stream
+, Content-Length: 1971
+, Server: AmazonS3
+]
+0627-214022.240 SS Cleaning up REST metadata items
+0627-214022.240 SS Removed Amazon header prefix from key: x-amz-request-id=>request-id
+0627-214022.240 SS Leaving header item unchanged: ETag="d0d4d243b53d885598de751a7c00e132"
+0627-214022.240 SS Leaving header item unchanged: Date=Fri, 28 Jun 2013 04:40:23 GMT
+0627-214022.240 SS Parsing date string 'Fri, 28 Jun 2013 04:40:23 GMT' into Date object for key: Date
+0627-214022.240 SS Leaving HTTP header item unchanged: Content-Length=1971
+0627-214022.240 SS Removed Amazon header prefix from key: x-amz-id-2=>id-2
+0627-214022.240 SS Leaving header item unchanged: Last-Modified=Mon, 24 Jun 2013 05:32:07 GMT
+0627-214022.240 SS Parsing date string 'Mon, 24 Jun 2013 05:32:07 GMT' into Date object for key: Last-Modified
+0627-214022.240 SS Ignoring metadata item: Accept-Ranges=bytes
+0627-214022.240 SS Leaving HTTP header item unchanged: Content-Type=application/octet-stream
+0627-214022.240 SS Ignoring metadata item: Server=AmazonS3
+0627-214022.241 SS Releasing connection back to connection manager.
+0627-214022.241 SS Freeing connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214022.241 SS Adding connection at: 1372394422241
+0627-214022.241 SS Notifying no-one, there are no waiting threads
+0627-214022.242 SS Released HttpMethod as its response data stream is closed
+0627-214022.242 SS Opening key 'log4j.properties' for reading at position '0'
+0627-214022.242 SS Retrieving All information for bucket tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b and object log4j.properties
+0627-214022.242 SS Only retrieve object if it is within range:bytes=0-
+0627-214022.242 SS s3service.disable-dns-buckets=false
+0627-214022.242 SS S3 URL: https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443/log4j.properties
+0627-214022.242 SS Added request header to connection: Range=bytes=0-
+0627-214022.243 SS Performing GET request for 'https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com/log4j.properties', expecting response code 206
+0627-214022.243 SS Adding authorization for AWS Access Key 'AKIAIOYHYYV7XXIZJECA'.
+0627-214022.243 SS Canonical string ('|' is a newline): GET|||Fri, 28 Jun 2013 04:40:22 GMT|/tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b/log4j.properties
+0627-214022.244 SS HttpConnectionManager.getConnection:  config = HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com], timeout = 0
+0627-214022.244 SS Getting free connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214022.244 SS Open connection to tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com:443
+0627-214022.317 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214022.318 SS Adding Host request header
+0627-214022.318 SS >> "Content-Type: [\r][\n]"
+0627-214022.318 SS >> "Range: bytes=0-[\r][\n]"
+0627-214022.318 SS >> "Date: Fri, 28 Jun 2013 04:40:22 GMT[\r][\n]"
+0627-214022.318 SS >> "Authorization: AWS AKIAIOYHYYV7XXIZJECA:+4iierz6GBLWPOlL8hDdSpGh5yU=[\r][\n]"
+0627-214022.318 SS >> "User-Agent: JetS3t/0.6.1 (Linux/3.8.0-25-generic; amd64; en; JVM 1.7.0_21)[\r][\n]"
+0627-214022.318 SS >> "Host: tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com[\r][\n]"
+0627-214022.318 SS >> "[\r][\n]"
+0627-214022.734 SS << "HTTP/1.1 206 Partial Content[\r][\n]"
+0627-214022.734 SS << "x-amz-id-2: y+TVywKWmm+7WWUvTJOkMsODWSZBj/wfBSYXgF7fb7RDz+l0o2YsNQoWgm5o4Zee[\r][\n]"
+0627-214022.735 SS << "x-amz-request-id: 3880BED24F7AC123[\r][\n]"
+0627-214022.735 SS << "Date: Fri, 28 Jun 2013 04:40:23 GMT[\r][\n]"
+0627-214022.735 SS << "Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT[\r][\n]"
+0627-214022.735 SS << "ETag: "d0d4d243b53d885598de751a7c00e132"[\r][\n]"
+0627-214022.735 SS << "Accept-Ranges: bytes[\r][\n]"
+0627-214022.735 SS << "Content-Range: bytes 0-1970/1971[\r][\n]"
+0627-214022.735 SS << "Content-Type: application/octet-stream[\r][\n]"
+0627-214022.735 SS << "Content-Length: 1971[\r][\n]"
+0627-214022.735 SS << "Server: AmazonS3[\r][\n]"
+0627-214022.735 SS Response for '/log4j.properties'. Content-Type: application/octet-stream, Headers: [x-amz-id-2: y+TVywKWmm+7WWUvTJOkMsODWSZBj/wfBSYXgF7fb7RDz+l0o2YsNQoWgm5o4Zee
+, x-amz-request-id: 3880BED24F7AC123
+, Date: Fri, 28 Jun 2013 04:40:23 GMT
+, Last-Modified: Mon, 24 Jun 2013 05:32:07 GMT
+, ETag: "d0d4d243b53d885598de751a7c00e132"
+, Accept-Ranges: bytes
+, Content-Range: bytes 0-1970/1971
+, Content-Type: application/octet-stream
+, Content-Length: 1971
+, Server: AmazonS3
+]
+0627-214022.735 SS Cleaning up REST metadata items
+0627-214022.735 SS Removed Amazon header prefix from key: x-amz-request-id=>request-id
+0627-214022.735 SS Leaving header item unchanged: ETag="d0d4d243b53d885598de751a7c00e132"
+0627-214022.735 SS Leaving header item unchanged: Date=Fri, 28 Jun 2013 04:40:23 GMT
+0627-214022.736 SS Parsing date string 'Fri, 28 Jun 2013 04:40:23 GMT' into Date object for key: Date
+0627-214022.736 SS Leaving HTTP header item unchanged: Content-Length=1971
+0627-214022.736 SS Removed Amazon header prefix from key: x-amz-id-2=>id-2
+0627-214022.736 SS Leaving header item unchanged: Last-Modified=Mon, 24 Jun 2013 05:32:07 GMT
+0627-214022.736 SS Parsing date string 'Mon, 24 Jun 2013 05:32:07 GMT' into Date object for key: Last-Modified
+0627-214022.736 SS Ignoring metadata item: Accept-Ranges=bytes
+0627-214022.736 SS Leaving HTTP header item unchanged: Content-Type=application/octet-stream
+0627-214022.736 SS Ignoring metadata item: Server=AmazonS3
+0627-214022.736 SS Ignoring metadata item: Content-Range=bytes 0-1970/1971
+0627-214022.736 SS << "# May get overridden by System Property[\n]"
+0627-214022.737 SS << "tachyon.logger.type=Console[\n]"
+0627-214022.737 SS << "[\n]"
+0627-214022.737 SS << "log4j.rootLogger=INFO, ${tachyon.logger.type}[\n]"
+0627-214022.737 SS << "[\n]"
+0627-214022.737 SS << "log4j.appender.Console=org.apache.log4j.ConsoleAppender[\n]"
+0627-214022.737 SS << "log4j.appender.Console.Target=System.out[\n]"
+0627-214022.737 SS << "log4j.appender.Console.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214022.737 SS << "log4j.appender.Console.layout.ConversionPattern=%d{ISO8601} %-5p %c{1} (%F:%M) - %m%n[\n]"
+0627-214022.737 SS << "[\n]"
+0627-214022.737 SS << "# Appender for Master[\n]"
+0627-214022.737 SS << "log4j.appender.MASTER_LOGGER=tachyon.Log4jFileAppender[\n]"
+0627-214022.737 SS << "log4j.appender.MASTER_LOGGER.File=${tachyon.home}/logs/master.log[\n]"
+0627-214022.737 SS << "[\n]"
+0627-214022.737 SS << "log4j.appender.MASTER_LOGGER.MaxFileSize=10[\n]"
+0627-214022.737 SS << "log4j.appender.MASTER_LOGGER.MaxBackupIndex=100[\n]"
+0627-214022.737 SS << "log4j.appender.MASTER_LOGGER.DeletionPercentage=10[\n]"
+0627-214022.737 SS << "log4j.appender.MASTER_LOGGER.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214022.738 SS << "log4j.appender.MASTER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M) - %m%n[\n]"
+0627-214022.738 SS << "#log4j.appender.MASTER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n[\n]"
+0627-214022.738 SS << "[\n]"
+0627-214022.738 SS << "# Appender for Workers[\n]"
+0627-214022.738 SS << "log4j.appender.WORKER_LOGGER=tachyon.Log4jFileAppender[\n]"
+0627-214022.738 SS << "log4j.appender.WORKER_LOGGER.File=${tachyon.home}/logs/worker.log[\n]"
+0627-214022.738 SS << "[\n]"
+0627-214022.738 SS << "log4j.appender.WORKER_LOGGER.MaxFileSize=10[\n]"
+0627-214022.738 SS << "log4j.appender.WORKER_LOGGER.MaxBackupIndex=100[\n]"
+0627-214022.738 SS << "log4j.appender.WORKER_LOGGER.DeletionPercentage=10[\n]"
+0627-214022.738 SS << "log4j.appender.WORKER_LOGGER.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214022.738 SS << "log4j.appender.WORKER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M) - %m%n[\n]"
+0627-214022.738 SS << "#log4j.appender.WORKER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n[\n]"
+0627-214022.738 SS << "[\n]"
+0627-214022.739 SS << "# Appender for User[\n]"
+0627-214022.739 SS << "log4j.appender.USER_LOGGER=tachyon.Log4jFileAppender[\n]"
+0627-214022.739 SS << "log4j.appender.USER_LOGGER.File=${tachyon.home}/logs/user.log[\n]"
+0627-214022.739 SS << "log4j.appender.USER_LOGGER.MaxFileSize=10[\n]"
+0627-214022.739 SS << "log4j.appender.USER_LOGGER.MaxBackupIndex=10[\n]"
+0627-214022.739 SS << "log4j.appender.USER_LOGGER.DeletionPercentage=20[\n]"
+0627-214022.739 SS << "log4j.appender.USER_LOGGER.layout=org.apache.log4j.PatternLayout[\n]"
+0627-214022.739 SS << "log4j.appender.USER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M) - %m%n[\n]"
+0627-214022.739 SS << "#log4j.appender.USER_LOGGER.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n[\n]"
+0627-214022.740 SS Resorting to protocol version default close connection policy
+0627-214022.740 SS Should NOT close connection, using HTTP/1.1
+0627-214022.740 SS Releasing connection back to connection manager.
+0627-214022.740 SS Freeing connection, hostConfig=HostConfiguration[host=https://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b.s3.amazonaws.com]
+0627-214022.740 SS Adding connection at: 1372394422740
+0627-214022.740 SS Notifying no-one, there are no waiting threads
+0627-214022.740 SS Released HttpMethod as its response data stream is fully consumed
+0627-214022.740 SS Finished ResultTask(1, 0)
+0627-214022.741 SS Got event of type spark.scheduler.CompletionEvent
+0627-214022.741 SS Completed ResultTask(1, 0)
+0627-214022.741 SS Stage 1 (textFile at <console>:12) finished in 0.889 s
+0627-214022.741 SS Job finished: count at <console>:15, took 0.891539847 s
+res1: Long = 41
+
+scala> 0627-214022.801 SS Starting clear of FileSystem cache with 2 elements.
+0627-214022.804 SS Removing filesystem for file:///
+0627-214022.804 SS Removing filesystem for file:///
+0627-214022.804 SS Removing filesystem for s3n://tachyon-test-ad8ed933-5bce-4558-bef9-cb47ea4bb74b
+0627-214022.805 SS Done clearing cache
+0627-214022.806 SS Shutdown hook called

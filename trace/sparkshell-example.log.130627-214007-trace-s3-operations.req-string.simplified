@@ -1,0 +1,50 @@
+scala> s.count()
+	
+0627-214020.094 SS >> "HEAD /log4j.properties HTTP/1.1[\r][\n]"
+0627-214020.546 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214020.548 SS << "x-amz-id-2: 0t+upf/9+2EPp9vy8pTfTT5uaXyWnAVaXg+3NqZxV/Bn/1C6cavZb6VBIhcD2HFI[\r][\n]"
+0627-214020.548 SS << "x-amz-request-id: 1C3822383537DAF8[\r][\n]"
+0627-214020.548 SS << "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+
+0627-214020.735 SS >> "HEAD /log4j.properties HTTP/1.1[\r][\n]"
+0627-214020.859 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214020.860 SS << "x-amz-id-2: wSGGliVNokR93F0gBYErwDvlid98LjP/tX/gZqTq20WN5dUV8etL7NQzEedR8uVu[\r][\n]"
+0627-214020.860 SS << "x-amz-request-id: D2762C80704530AD[\r][\n]"
+0627-214020.860 SS << "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+
+0627-214020.868 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214021.129 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214021.130 SS << "x-amz-id-2: ttotj2ENMxqcar/hqvO+7hWGQf1FJpaysS70RAYmjcd1P5+zhO5fw95a9jqIUTrs[\r][\n]"
+0627-214021.130 SS << "x-amz-request-id: F6DE347AB494D07C[\r][\n]"
+0627-214021.130 SS << "Date: Fri, 28 Jun 2013 04:40:21 GMT[\r][\n]"
+
+0627-214021.216 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214021.216 SS >> "Range: bytes=0-[\r][\n]"
+0627-214021.631 SS << "HTTP/1.1 206 Partial Content[\r][\n]"
+0627-214021.632 SS << "x-amz-id-2: BCGA6Obs62oHVrSc3n7AsdwGjMECc8BrfIADzcO+ahjLaeVw+OKiHFn/v0/G989X[\r][\n]"
+0627-214021.632 SS << "x-amz-request-id: 75B15ADF5FC8D489[\r][\n]"
+0627-214021.632 SS << "Date: Fri, 28 Jun 2013 04:40:22 GMT[\r][\n]"
+0627-214021.632 SS << "Content-Range: bytes 0-1970/1971[\r][\n]"
+
+
+scala> s.count()
+
+0627-214021.880 SS >> "HEAD /log4j.properties HTTP/1.1[\r][\n]"
+0627-214021.969 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214021.969 SS << "x-amz-id-2: jZehicgav3D2kl2HfDo7HyyJpEZkLhlUSBqycEwzjqTrCP0dp963kc19A1sZ/ELt[\r][\n]"
+0627-214021.969 SS << "x-amz-request-id: FB32C82ECF79FD0B[\r][\n]"
+0627-214021.969 SS << "Date: Fri, 28 Jun 2013 04:40:22 GMT[\r][\n]"
+
+0627-214021.974 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214022.239 SS << "HTTP/1.1 200 OK[\r][\n]"
+0627-214022.239 SS << "x-amz-id-2: fu9Iu1Nl05tPTGvtrT//eAx8Xh2xIc7ZLPjtgZHYRoIUQEZ0Tw5DXGQNArVo+4Tp[\r][\n]"
+0627-214022.239 SS << "x-amz-request-id: AFAA17D5A868EC3E[\r][\n]"
+0627-214022.239 SS << "Date: Fri, 28 Jun 2013 04:40:23 GMT[\r][\n]"
+
+0627-214022.317 SS >> "GET /log4j.properties HTTP/1.1[\r][\n]"
+0627-214022.318 SS >> "Range: bytes=0-[\r][\n]"
+0627-214022.734 SS << "HTTP/1.1 206 Partial Content[\r][\n]"
+0627-214022.734 SS << "x-amz-id-2: y+TVywKWmm+7WWUvTJOkMsODWSZBj/wfBSYXgF7fb7RDz+l0o2YsNQoWgm5o4Zee[\r][\n]"
+0627-214022.735 SS << "x-amz-request-id: 3880BED24F7AC123[\r][\n]"
+0627-214022.735 SS << "Date: Fri, 28 Jun 2013 04:40:23 GMT[\r][\n]"
+0627-214022.735 SS << "Content-Range: bytes 0-1970/1971[\r][\n]"

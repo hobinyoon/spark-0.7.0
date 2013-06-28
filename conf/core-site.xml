@@ -1,6 +1,17 @@
 <configuration>
+	<!--
 	<property>
 		<name>fs.tachyon.impl</name>
 		<value>tachyon.hadoop.TachyonFileSystem</value>
+	</property>
+	-->
+	<property>
+		<name>fs.s3n.awsAccessKeyId</name>
+		<value>----------</value>
+	</property>
+
+	<property>
+		<name>fs.s3n.awsSecretAccessKey</name>
+		<value>----------value>
 	</property>
 </configuration>
