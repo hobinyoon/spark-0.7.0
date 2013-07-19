@@ -24,6 +24,7 @@
 
 export SCALA_HOME=/usr/local/scala-2.9.3
 
+export SPARK_MEM=3g
 export SPARK_CLASSPATH+=~/work/tachyon/target/tachyon-0.2.1-jar-with-dependencies.jar
 SPARK_JAVA_OPTS+=" -Dspark.default.parallelism=1 "
 export SPARK_JAVA_OPTS
